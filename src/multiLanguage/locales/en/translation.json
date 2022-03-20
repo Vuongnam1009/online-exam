@@ -1,0 +1,8 @@
+{
+    "menuList":{
+        "home":"Home",
+        "contestManagement":"Contest Management",
+        "questionManagement":"Question Management",
+        "accountInformation":"Account information"
+    }
+}

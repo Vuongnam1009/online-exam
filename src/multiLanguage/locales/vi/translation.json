@@ -1,0 +1,8 @@
+{
+    "menuList":{
+        "home":"Trang chủ",
+        "contestManagement":"Quản lý cuộc thi",
+        "questionManagement":"Quản lý câu hỏi",
+        "accountInformation":"Thông tin tài khoản"
+    }
+}
