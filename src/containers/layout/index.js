@@ -4,9 +4,9 @@ import React from 'react'
 import Header from './header/index'
 import SideBar from './sideBar/index'
 import {useSelector, useDispatch} from 'react-redux'
-import {setMenu} from '../redux/actions/index'
+import {setMenu} from '../../redux/actions/index'
 
-function Layout() {
+const Layout=()=>{
     const theme = useTheme()
     const leftDrawerOpened = useSelector((state) => state.customization.drawerOpen)
     const dispatch = useDispatch()
@@ -24,7 +24,7 @@ function Layout() {
                 color="inherit"
                 elevation={0}
                 sx={{
-                    bgcolor: theme.palette.background.default,
+                    bgcolor: theme.palette.primary,
                     transition: leftDrawerOpened ? theme.transitions.create('width') : 'none'
                 }}
             >

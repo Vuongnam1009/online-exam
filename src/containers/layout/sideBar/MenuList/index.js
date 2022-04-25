@@ -1,9 +1,9 @@
 import { List, Typography } from '@mui/material'
 import React from 'react'
-import menuItems from '../../../menu-items'
+import menuItems from './menus'
 import NavItem from './NavItem'
 
-function MenuList() {
+const MenuList = ()=> {
     const items = menuItems.map((item) =>{
         switch (item.type) {
             case 'collapse':

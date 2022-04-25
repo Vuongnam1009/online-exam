@@ -1,6 +1,6 @@
 import { ThemeProvider } from '@mui/material/styles';
 import {useSelector} from 'react-redux'
-import Layout from './layout/index';
+import Layout from './containers/layout/index';
 import themes from './themes/index';
 function App() {
   const customization = useSelector(state => state.customization)

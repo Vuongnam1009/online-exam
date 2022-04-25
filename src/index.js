@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from'./redux/store/index'
 
-import i18n from './multiLanguage/translation/i18n'
+import i18n from './languages/translation/i18n'
 
 
 

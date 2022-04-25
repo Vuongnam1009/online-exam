@@ -4,9 +4,9 @@ import {useSelector, useDispatch} from 'react-redux'
 import { useTheme} from '@mui/material/styles'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
-import {setDarkMode} from '../../../redux/actions/index'
+import {setDarkMode} from '../../../../redux/actions/index'
 
-function DarkMode() {
+const DarkMode= ()=> {
     const theme = useTheme()
     const dispatch = useDispatch()
     const customization = useSelector((state)=>state.customization)

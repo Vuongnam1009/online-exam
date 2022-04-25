@@ -3,23 +3,19 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import TranslateIcon from '@mui/icons-material/Translate';
-import { useSelector, useDispatch } from 'react-redux';
-
 import i18n from 'i18next'
 
-export default function SelectLanguage() {
+const SelectLanguage= ()=>{
   const options = ['vi','en']
   const [isOp,setIsOp] = React.useState('vi')
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  function handleClose(op){
+  const handleClose= (op)=>{
     i18n.changeLanguage(op);
-
     setAnchorEl(null);
     setIsOp(op);
   };
@@ -45,3 +41,4 @@ export default function SelectLanguage() {
     </div>
   );
 }
+export default SelectLanguage

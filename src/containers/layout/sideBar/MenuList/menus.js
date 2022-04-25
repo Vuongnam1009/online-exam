@@ -10,9 +10,8 @@ const icons = {
     QuizIcon,
     AssignmentIndIcon
 };
-// ==============================|| UTILITIES MENU ITEMS ||============================== //
 
-const menuItems =[
+const menuItems = [
         {
             id: 'Home',
             title: 'menuList.home',

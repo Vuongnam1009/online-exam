@@ -1,4 +1,4 @@
-import { Avatar, Box, ButtonBase } from '@mui/material'
+import { Avatar, Box, ButtonBase, Typography } from '@mui/material'
 import React from 'react'
 import { useTheme } from '@mui/material/styles';
 
@@ -6,7 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import DarkMode from './darkMode/DarkMode';
 import SelectLanguage from './selectLanguage/selectLanguage'
 
-function Header({handleLeftDrawerToggle}) {
+const Header = ({handleLeftDrawerToggle})=> {
     const theme = useTheme()
     console.log(theme)
     return (
@@ -39,6 +39,10 @@ function Header({handleLeftDrawerToggle}) {
                 >
                     MULTICHOICE
                 </Box>
+                <Typography variant='h1'>
+                    Hihihih
+
+                </Typography>
                 <ButtonBase>
                     <Avatar
                         sx={{

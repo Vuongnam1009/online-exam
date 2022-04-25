@@ -6,7 +6,6 @@ function NavItem({item}) {
     const { t }= useTranslation()
     const Icon = item.icon
     const title = item.title
-    console.log(title);
 
     return (
     <ListItemButton>

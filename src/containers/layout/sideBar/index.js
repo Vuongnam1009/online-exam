@@ -3,7 +3,7 @@ import {Box, Drawer, useMediaQuery} from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import MenuList from './MenuList/index'
 
-function SideBar({drawerOpen,drawerClose}) {
+const SideBar= ({drawerOpen,drawerClose})=>{
     const theme = useTheme()
     const matchUpMd = useMediaQuery(theme.breakpoints.up('md'))
     const drawer = (
