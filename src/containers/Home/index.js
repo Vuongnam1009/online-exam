@@ -5,9 +5,11 @@ import { Paper, Tabs, Tab, Grid, Box, Typography } from '@mui/material';
 import contestApi from '../../api/contestApi';
 import Tabdetail from './TabDetail';
 
+let contestsDefault = []
+
+
 const Home = () => {
   const { t } = useTranslation();
-
   const menus = [
     { id: 0, heading: t('home.0') },
     { id: 1, heading: t('home.1') },
@@ -15,19 +17,50 @@ const Home = () => {
     { id: 3, heading: t('home.3') },
     { id: 4, heading: t('home.4') },
   ];
-
+  const [tab,setTab] = useState(0)
   const [contests, setContests] = useState([]);
+  const fetchContests = async () => {
+    try{
+      const data = await contestApi.getAll()
+      setContests(data)
+      contestsDefault = [...data]
+    }catch(e){
+      console.error("error")
+    }
+  };
   useEffect(() => {
-    const fetchContests = async () => {
-      try{
-        const data = await contestApi.getAll()
-        setContests(data)
-      }catch(e){
-        console.error("error")
-      }
-    };
     fetchContests();
   }, []);
+  const handleChangeTab = (e,newTab) => {
+    setTab(newTab)
+    const date = new Date()
+    if(newTab === 0){
+      setContests([...contestsDefault])
+    }
+    if(newTab === 1){
+      setContests([])
+    }
+    if (newTab === 2) {
+      const newContests = contestsDefault.filter((el) => {
+        if (el.endTime && new Date(el.endTime) < date) return false
+        if (new Date(el.startTime) > date) return false
+        return true
+      })
+      setContests([...newContests])
+    }
+    if (newTab === 3) {
+      const newContests = contestsDefault.filter(
+        (el) => new Date(el.startTime) > date
+      )
+      setContests([...newContests])
+    }
+    if (newTab === 4) {
+      const newContests = contestsDefault.filter(
+        (el) => el.endTime && new Date(el.endTime) < date
+      )
+      setContests([...newContests])
+    }
+  }
 
   return (
     <>
@@ -39,10 +72,12 @@ const Home = () => {
       <Paper
         sx={{
           marginBottom: '12px',
+          paddingLeft:'12px'
         }}
       >
         <Tabs
-          value={0}
+          value={tab}
+          onChange={handleChangeTab}
           indicatorColor="primary"
           textColor="primary"
         >
@@ -60,8 +95,6 @@ const Home = () => {
             <Tabdetail contest={contest}/>
           )
         })}
-
-
       </Grid>
     </>
   );

@@ -29,6 +29,7 @@ export default function Tabdetail({contest}) {
     <Grid item sx={4}>
         <Card sx={{
             width: 345,
+            height: 400,
             marginBottom:'12px'
         }}
         >
