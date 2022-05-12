@@ -1,99 +1,105 @@
 /* eslint-disable no-useless-return */
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Paper, Tabs, Tab, Grid, Box, Typography } from '@mui/material';
-import contestApi from '../../api/contestApi';
-import Tabdetail from './TabDetail';
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import {
+  Paper,
+  Tabs,
+  Tab,
+  Grid,
+  Box,
+  Typography,
+  useTheme,
+} from "@mui/material";
+import contestApi from "../../api/contestApi";
+import Tabdetail from "./TabDetail";
 
-let contestsDefault = []
-
+let contestsDefault = [];
 
 const Home = () => {
+  const theme = useTheme();
   const { t } = useTranslation();
   const menus = [
-    { id: 0, heading: t('home.0') },
-    { id: 1, heading: t('home.1') },
-    { id: 2, heading: t('home.2') },
-    { id: 3, heading: t('home.3') },
-    { id: 4, heading: t('home.4') },
+    { id: 0, heading: t("home.0") },
+    { id: 1, heading: t("home.1") },
+    { id: 2, heading: t("home.2") },
+    { id: 3, heading: t("home.3") },
+    { id: 4, heading: t("home.4") },
   ];
-  const [tab,setTab] = useState(0)
+  const [tab, setTab] = useState(0);
   const [contests, setContests] = useState([]);
   const fetchContests = async () => {
-    try{
-      const data = await contestApi.getAll()
-      setContests(data)
-      contestsDefault = [...data]
-    }catch(e){
-      console.error("error")
+    try {
+      const data = await contestApi.getAll();
+      setContests(data);
+      contestsDefault = [...data];
+    } catch (e) {
+      console.error("error");
     }
   };
   useEffect(() => {
     fetchContests();
   }, []);
-  const handleChangeTab = (e,newTab) => {
-    setTab(newTab)
-    const date = new Date()
-    if(newTab === 0){
-      setContests([...contestsDefault])
+  const handleChangeTab = (e, newTab) => {
+    setTab(newTab);
+    const date = new Date();
+    if (newTab === 0) {
+      setContests([...contestsDefault]);
     }
-    if(newTab === 1){
-      setContests([])
+    if (newTab === 1) {
+      setContests([]);
     }
     if (newTab === 2) {
       const newContests = contestsDefault.filter((el) => {
-        if (el.endTime && new Date(el.endTime) < date) return false
-        if (new Date(el.startTime) > date) return false
-        return true
-      })
-      setContests([...newContests])
+        if (el.endTime && new Date(el.endTime) < date) return false;
+        if (new Date(el.startTime) > date) return false;
+        return true;
+      });
+      setContests([...newContests]);
     }
     if (newTab === 3) {
       const newContests = contestsDefault.filter(
         (el) => new Date(el.startTime) > date
-      )
-      setContests([...newContests])
+      );
+      setContests([...newContests]);
     }
     if (newTab === 4) {
       const newContests = contestsDefault.filter(
         (el) => el.endTime && new Date(el.endTime) < date
-      )
-      setContests([...newContests])
+      );
+      setContests([...newContests]);
     }
-  }
+  };
 
   return (
     <>
       <Box mb={1}>
-        <Typography variant="h4" gutterBottom>
-          {t('home.title')}
+        <Typography
+          sx={{
+            color: "primary.main",
+            fontSize: "16px",
+            fontWeight: "550",
+          }}
+        >
+          {t("home.title")}
         </Typography>
       </Box>
       <Paper
         sx={{
-          marginBottom: '12px',
-          paddingLeft:'12px'
+          marginBottom: "12px",
+          paddingLeft: "12px",
         }}
       >
-        <Tabs
-          value={tab}
-          onChange={handleChangeTab}
-          indicatorColor="primary"
-          textColor="primary"
-        >
+        <Tabs value={tab} onChange={handleChangeTab} indicatorColor="primary">
           {menus.map((el) => (
             <Tab label={el.heading} key={el.id}>
               {el.heading}
             </Tab>
-
           ))}
         </Tabs>
       </Paper>
       <Grid container spacing={5} justifyContent="center">
-        {contests.map((contest)=>{
-          return (
-            <Tabdetail contest={contest}/>
-          )
+        {contests.map((contest) => {
+          return <Tabdetail contest={contest} />;
         })}
       </Grid>
     </>
