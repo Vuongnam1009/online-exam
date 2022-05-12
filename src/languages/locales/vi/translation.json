@@ -4,5 +4,13 @@
         "contestManagement":"Quản lý cuộc thi",
         "questionManagement":"Quản lý câu hỏi",
         "accountInformation":"Thông tin tài khoản"
+    },
+    "home":{
+        "title": "Danh sách cuộc thi",
+        "0": "Tất cả cuộc thi",
+        "1": "Đã tham gia",
+        "2": "Đang diễn gia",
+        "3": "Sắp diễn gia",
+        "4": "Đã kết thúc"
     }
 }

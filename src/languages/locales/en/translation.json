@@ -4,5 +4,13 @@
         "contestManagement":"Contest Management",
         "questionManagement":"Question Management",
         "accountInformation":"Account information"
+    },
+    "home":{
+        "title": "List of contests",
+        "0": "All contests",
+        "1": "Joined contests",
+        "2": "Happenning contests",
+        "3": "Upcoming contests",
+        "4": "Finished contests"
     }
 }

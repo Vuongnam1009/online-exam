@@ -1,35 +1,28 @@
 import { createTheme } from '@mui/material/styles';
 
-import colors from '../assets/scss/themes-vars.module.scss';
-
 import componentStyleOverrides from './compStyleOverride';
-import themePalette from './palette';
 import themeTypography from './typography';
-
+import themePalette from './palette';
+import {deepPurple, lightBlue, grey, green} from '@mui/material/colors'
 
 export const theme = (customization) => {
-    const color = colors;
     const isDarkMode = customization.isDarkMode;
-    console.log(customization);
-
     const themeOption = {
-        colors: color,
-        heading: isDarkMode ? color.grey50 : color.grey900,
-        paper: isDarkMode ? color.darkPaper : color.paper,
-        background: isDarkMode ? color.darkPrimaryLight : color.primaryLight,
-        darkTextPrimary: isDarkMode ? color.grey50 : color.grey700,
-        darkTextSecondary: isDarkMode ? color.grey50 : color.grey500,
-        textDark: isDarkMode ? color.grey50 : color.grey900,
-        menuSelected: isDarkMode ? color.darkSecondaryDark : color.secondaryDark,
-        menuSelectedBack: isDarkMode ? color.darkSecondaryLight : color.secondaryLight,
-        divider: isDarkMode ? color.grey50 : color.grey200,
-        backgroundDefault: isDarkMode ? color.darkPaper : color.paper,
+        heading: isDarkMode ? grey[50]: grey[900],
+        paper: isDarkMode ? green[500] : green[500],
+        background: isDarkMode ? grey[50] : grey[900],
+        darkTextPrimary: isDarkMode ? grey[600]: grey[900],
+        darkTextSecondary: isDarkMode ? deepPurple[300]: grey[400],
+        textDark: isDarkMode ? grey[50] : grey[900],
+        menuSelected: isDarkMode ? deepPurple[300] : deepPurple[500],
+        menuSelectedBack: isDarkMode ? '#1a223f' :  deepPurple[50],
+        divider: isDarkMode ? grey[50 ]: grey[200],
+        backgroundDefault: isDarkMode ? green[500] : green[500],
         customization
     };
 
     const themeOptions = {
         direction: 'ltr',
-        palette: themePalette(themeOption),
         mixins: {
             toolbar: {
                 minHeight: '48px',
@@ -39,7 +32,8 @@ export const theme = (customization) => {
                 }
             }
         },
-        typography: themeTypography(themeOption)
+        typography: themeTypography(themeOption),
+        palette: themePalette(themeOption,isDarkMode)
     };
 
     const themes = createTheme(themeOptions);

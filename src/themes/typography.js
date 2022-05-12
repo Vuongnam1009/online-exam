@@ -1,7 +1,3 @@
-/**
- * Typography used in theme
- * @param {JsonObject} theme theme customization object
- */
 
 export default function themeTypography(theme) {
     return {
@@ -87,14 +83,15 @@ export default function themeTypography(theme) {
             }
         },
         mainContent: {
-            backgroundColor: theme.background,
-            width: '100%',
             minHeight: 'calc(100vh - 88px)',
             flexGrow: 1,
             padding: '20px',
             marginTop: '88px',
-            marginRight: '20px',
             borderRadius: `${theme?.customization?.borderRadius}px`
+        },
+        commonButton: {
+            borderRadius: `${theme?.customization?.borderRadius}px`,
+            color: theme.menuSelected
         },
         menuCaption: {
             fontSize: '0.875rem',
@@ -112,7 +109,14 @@ export default function themeTypography(theme) {
         },
         commonAvatar: {
             cursor: 'pointer',
-            borderRadius: '8px'
+            borderRadius: '8px',
+            transition: 'all .2s ease-in-out',
+            bgcolor: 'secondary.light',
+                color: 'secondary.dark',
+            '&:hover':{
+                bgcolor: 'secondary.dark',
+                color: 'secondary.light'
+            }
         },
         smallAvatar: {
             width: '22px',

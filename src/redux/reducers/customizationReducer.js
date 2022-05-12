@@ -1,13 +1,14 @@
 
 export const initial = {
+    isOpen:'1',
     fontFamily:[],
     isDarkMode: false,
-    drawerOpen: true
+    drawerOpen: true,
+    borderRadius: 12,
 }
 
 
 function customizationReducer(state= initial, action) {
-    console.log(action);
     switch (action.type) {
         case 'SET_DARK_MODE':
             return{
@@ -21,6 +22,11 @@ function customizationReducer(state= initial, action) {
                 ...state,
                 drawerOpen :action.payload
             }
+        case 'MENU_OPEN':
+                return {
+                    ...state,
+                    isOpen: action.payload
+                };
         default:
             return state
     };

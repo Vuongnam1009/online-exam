@@ -19,3 +19,9 @@ export function setMenu(opened){
         payload:opened
     }
 }
+export function setMenuOpen(id){
+    return {
+        type: 'MENU_OPEN',
+        payload:id
+    }
+}
