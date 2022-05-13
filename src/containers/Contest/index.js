@@ -19,8 +19,10 @@ import AddIcon from "@mui/icons-material/Add";
 import moment from "moment";
 import { Box } from "@mui/system";
 import FormAddExam from "./FormAddExam/index";
+import {useTranslation} from 'react-i18next'
 
 function Contest() {
+    const {t} =useTranslation()
   const theme = useTheme();
   const [contests, setContests] = useState([]);
   const [modal, setModal] = useState(false);
@@ -62,18 +64,18 @@ function Contest() {
         startIcon={<AddIcon />}
         onClick={openModal}
       >
-        ADD EXAM
+        {t('contest.addExam')}
       </Button>
       <FormAddExam modal={modal} handleCloseModal={handleCloseModal} />
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} size="medium" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              <TableCell>Tên cuộc thi</TableCell>
-              <TableCell align="center">Thời gian(phút)</TableCell>
-              <TableCell align="left">Ngày</TableCell>
-              <TableCell align="center">Mã code</TableCell>
-              <TableCell align="center">Trạng thái</TableCell>
+              <TableCell>{t('contest.table.name')}</TableCell>
+              <TableCell align="center">{t('contest.table.time')}</TableCell>
+              <TableCell align="left">{t('contest.table.date')}</TableCell>
+              <TableCell align="center">{t('contest.table.code')}</TableCell>
+              <TableCell align="center">{t('contest.table.status')}</TableCell>
               <TableCell align="center"></TableCell>
               <TableCell align="center"></TableCell>
             </TableRow>
@@ -83,7 +85,7 @@ function Contest() {
               <TableRow
                 key={contest.id}
                 sx={{
-                    ...theme.typography.commonButton,
+                    ...theme.typography.customButton,
                   "&:last-child td, &:last-child th": { border: 0 },
                 }}
               >
@@ -108,7 +110,7 @@ function Contest() {
                   </IconButton>
                 </TableCell>
                 <TableCell align="center">
-                  <Button>THỐNG KÊ</Button>
+                  <Button>{t('contest.table.statistical')}</Button>
                 </TableCell>
               </TableRow>
             ))}

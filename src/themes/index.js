@@ -15,7 +15,7 @@ export const theme = (customization) => {
     darkTextSecondary: isDarkMode ? deepPurple[300] : grey[400],
     textDark: isDarkMode ? grey[50] : grey[900],
     menuSelected: isDarkMode ? deepPurple[300] : deepPurple[500],
-    menuSelectedBack: isDarkMode ? "#1a223f" : deepPurple[50],
+    menuSelectedBack: isDarkMode ? "#1d2549" : deepPurple[50],
     menuTabBack: isDarkMode ? '#29314f' :'#fff',
     divider: isDarkMode ? grey[50] : grey[200],
     backgroundDefault: isDarkMode ? green[500] : green[500],

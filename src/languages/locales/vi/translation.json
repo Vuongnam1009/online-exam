@@ -12,5 +12,16 @@
         "2": "Đang diễn gia",
         "3": "Sắp diễn gia",
         "4": "Đã kết thúc"
+    },
+    "contest":{
+        "addExam":"THÊM CUỘC THI",
+        "table":{
+            "name":"Tên cuộc thi",
+            "time":"Thời gian(phút)",
+            "date":"Ngày",
+            "code":"Mã code",
+            "status":"Trạng thái",
+            "statistical":"THỐNG KÊ"
+        }
     }
 }

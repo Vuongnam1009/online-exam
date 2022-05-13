@@ -12,5 +12,16 @@
         "2": "Happenning contests",
         "3": "Upcoming contests",
         "4": "Finished contests"
+    },
+    "contest":{
+        "addExam":"ADD EXAM",
+        "table":{
+            "name":"Name of the contest",
+            "time":"Time (minutes)",
+            "date":"Date",
+            "code":"Code",
+            "status":"Status",
+            "statistical":"STATISTICAL"
+        }
     }
 }

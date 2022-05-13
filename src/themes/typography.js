@@ -90,11 +90,12 @@ export default function themeTypography(theme) {
     },
     commonButton: {
       borderRadius: `${theme?.customization?.borderRadius}px`,
+    },
+    customButton: {
       "&:hover": {
-          cursor:'pointer',
-          bgcolor: "secondary.light",
-
-      }
+        cursor: "pointer",
+        bgcolor: theme.menuSelectedBack,
+      },
     },
     menuCaption: {
       fontSize: "0.875rem",
