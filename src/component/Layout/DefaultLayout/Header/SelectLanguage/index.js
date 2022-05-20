@@ -40,8 +40,8 @@ const SelectLanguage = () => {
         open={open}
         onClose={() => setAnchorEl(null)}
       >
-        {options.map((op) => (
-          <MenuItem selected={op === isOp} onClick={() => handleClose(op)}>
+        {options.map((op,i) => (
+          <MenuItem key={i} selected={op === isOp} onClick={() => handleClose(op)}>
             {op}
           </MenuItem>
         ))}

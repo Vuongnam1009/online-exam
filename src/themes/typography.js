@@ -88,6 +88,13 @@ export default function themeTypography(theme) {
       marginTop: "88px",
       borderRadius: `${theme?.customization?.borderRadius}px`,
     },
+    mainCard: {
+      minHeight: "100%",
+      flexGrow: 1,
+      padding: "20px",
+      margin: '16px',
+      borderRadius: `${theme?.customization?.borderRadius}px`,
+    },
     commonButton: {
       borderRadius: `${theme?.customization?.borderRadius}px`,
     },

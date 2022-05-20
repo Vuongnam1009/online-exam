@@ -4,7 +4,7 @@ export const initial = {
   isDarkMode: false,
   drawerOpen: true,
   borderRadius: 12,
-  token: null,
+  token: 1,
 };
 
 function customizationReducer(state = initial, action) {

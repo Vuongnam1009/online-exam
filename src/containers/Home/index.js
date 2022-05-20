@@ -27,16 +27,16 @@ const Home = () => {
   ];
   const [tab, setTab] = useState(0);
   const [contests, setContests] = useState([]);
-  const fetchContests = async () => {
-    try {
-      const data = await contestApi.getAll();
-      setContests(data);
-      contestsDefault = [...data];
-    } catch (e) {
-      console.error("error");
-    }
-  };
   useEffect(() => {
+    const fetchContests = async () => {
+        const data = await contestApi.getAll();
+        if(data){
+          setContests(data);
+          contestsDefault = [...data];
+        }else{
+          console.log('fetch API error');
+        }
+    };
     fetchContests();
   }, []);
   const handleChangeTab = (e, newTab) => {
@@ -69,7 +69,6 @@ const Home = () => {
       setContests([...newContests]);
     }
   };
-
   return (
     <>
       <Box mb={1}>
@@ -91,15 +90,13 @@ const Home = () => {
       >
         <Tabs value={tab} onChange={handleChangeTab} indicatorColor="primary">
           {menus.map((el) => (
-            <Tab label={el.heading} key={el.id}>
-              {el.heading}
-            </Tab>
+            <Tab label={el.heading} key={el.id} />
           ))}
         </Tabs>
       </Paper>
       <Grid container spacing={5} justifyContent="center">
         {contests.map((contest) => {
-          return <Tabdetail contest={contest} />;
+          return <Tabdetail contest={contest} key={contest.id}/>;
         })}
       </Grid>
     </>

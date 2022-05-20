@@ -1,4 +1,4 @@
-import * as React from "react";
+import {forwardRef} from "react";
 import { useTheme } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -10,11 +10,19 @@ import Typography from "@mui/material/Typography";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import moment from "moment";
 import { Button, Grid } from "@mui/material";
+import {Link} from 'react-router-dom'
 
 export default function Tabdetail({ contest}) {
   const theme = useTheme()
+  const idQ = contest.id
+  const id = contest.groupQuestion
+  let buttonProps = {
+    component: forwardRef((props, ref) => (
+      <Link ref={ref} {...props} to={`exam/${idQ}/${id}`} />
+    )),
+  };
   return (
-    <Grid item sx={4}>
+    <Grid item >
       <Card
         sx={{
           width: 345,
@@ -61,6 +69,7 @@ export default function Tabdetail({ contest}) {
             {contest.description}
           </Typography>
           <Button
+           {...buttonProps}
             sx={{
               ...theme.typography.commonAvatar
             }}
