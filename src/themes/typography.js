@@ -92,7 +92,7 @@ export default function themeTypography(theme) {
       minHeight: "100%",
       flexGrow: 1,
       padding: "20px",
-      margin: '16px',
+      margin: "16px",
       borderRadius: `${theme?.customization?.borderRadius}px`,
     },
     commonButton: {
@@ -127,6 +127,22 @@ export default function themeTypography(theme) {
       "&:hover": {
         bgcolor: "secondary.dark",
         color: "secondary.light",
+      },
+    },
+    commonImg: {
+      transition: "all .2s ease-in-out",
+      width: "220px",
+      height: "130px",
+      objectFit: "cover",
+      borderStyle: "solid",
+      borderWidth: "3px",
+      borderColor: "secondary.dark",
+      borderRadius: "12px",
+      overflow: "hidden",
+      "&:hover": {
+        boxShadow: "0 0 3px 1px rgba(0, 140, 186, 0.50)",
+        cursor: "pointer"
+
       },
     },
     smallAvatar: {
