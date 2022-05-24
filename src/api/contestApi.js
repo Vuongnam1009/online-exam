@@ -9,9 +9,14 @@ const contestApi = {
     const url = `/contests/${id}`;
     return axiosClient.delete(url);
   },
+  getGroupQuestions: () => {
+    const url= '/groupQuestions'
+    return axiosClient.get(url)
+
+  },
   getQuestions: async ({idQ,id})=>{
   const questions = (id)=>{
-    const url = `/groupQuestions/${id}/queston`;
+    const url = `/groupQuestions/${id}/questions`;
     return axiosClient.get(url)
   }
   const contest =(idQ)=>{

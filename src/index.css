@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.ck input.ck-input.ck-input-text {
+  box-shadow: var(--ck-inner-shadow),0 0;
+  background: var(--ck-color-input-background);
+  border: 1px solid var(--ck-color-input-border);
+  padding: var(--ck-spacing-extra-tiny) var(--ck-spacing-medium);
+  transition-property: box-shadow,border;
+  transition: .2s ease-in-out;
+
+  height: inherit;
+  width: inherit;
+  font-size: inherit;
+  margin: 0;
+  box-sizing: border-box;
+}

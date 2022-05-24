@@ -7,7 +7,7 @@ import { useTheme } from "@mui/material";
 
 const CreateName = () => {
   const theme = useTheme();
-  const [img, setImg] = useState();
+  const [img, setImg] = useState('');
   useEffect(() => {
     return () => {
       img && URL.revokeObjectURL(img.preview);
@@ -17,10 +17,10 @@ const CreateName = () => {
   const handlePreviewImg = (e) => {
     const file = e.target.files[0];
     file.preview = URL.createObjectURL(file);
-    setImg(file);
+    setImg(file.preview);
   };
   return (
-    <Box sx={{minHeight:'380px'}}>
+    <Box >
       <TextField
         margin="normal"
         fullWidth
@@ -58,7 +58,7 @@ const CreateName = () => {
             {img ? (
               <Box sx={{ ...theme.typography.commonImg }}>
                 <img
-                  src={img.preview}
+                  src={img}
                   alt=""
                   style={{ width: "100%", height: "100%" }}
                 />
@@ -84,6 +84,8 @@ const CreateName = () => {
             variant="outlined"
             name="imageUrl"
             id="imageUrl"
+            value={img}
+            onChange={(event)=>setImg(event.target.value)}
           />
         </Grid>
       </Grid>

@@ -2,6 +2,9 @@ import * as React from "react";
 import { Fade, Paper, Modal, Box, Backdrop, Typography } from "@mui/material";
 import CreateForm from './CreateForm/index'
 function FormAddExam({ modal, handleCloseModal }) {
+  const handleClose=()=>{
+    handleCloseModal()
+  }
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -22,15 +25,15 @@ function FormAddExam({ modal, handleCloseModal }) {
             left: "50%",
             transform: "translate(-50%, -50%)",
             width: '70%',
-            height: '90%',
+            height: '85%',
             boxShadow: 24,
             p: 4,
           }}
         >
           <Typography id="transition-modal-title" variant="h6" component="h2">
             This is form add exam
-            <CreateForm/>
           </Typography>
+            <CreateForm handleClose={handleClose} />
         </Paper>
       </Fade>
     </Modal>

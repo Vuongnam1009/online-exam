@@ -16,6 +16,7 @@ import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import contestApi from "../../api/contestApi";
+import EssayTest from "./EssayTest/index";
 
 let interval = null;
 
@@ -38,13 +39,12 @@ const ExamTest = () => {
       ...answers,
       [questionSelected.data.id]: value,
     });
+    console.log(answers);
   };
-  console.log(answers);
   function renderClockTime(time) {
     const hours = Math.floor(time / 3600);
     const minutes = Math.floor((time - hours * 3600) / 60);
     const seconds = Math.floor(time - hours * 3600 - minutes * 60);
-
     const hoursString = `0${hours}`.slice(-2);
     const minutesString = `0${minutes}`.slice(-2);
     const secondsString = `0${seconds}`.slice(-2);
@@ -56,27 +56,6 @@ const ExamTest = () => {
     setIsFullscreen((prev) => !prev);
   };
 
-  //   const handleFinishExam = async () =>{
-  //     const examData = {
-  //       doTime: contest.examTime * 60 - timeDoExam,
-  //       contestId: contest.id,
-  //       groupQuestionId: contest.groupQuestion,
-  //       answers,
-  //     };
-  //     const data = await apis.contest.mark({
-  //       ...examData,
-  //     });
-  //     if (data && data.status) {
-  //       const { result } = data.result;
-  //       // eslint-disable-next-line no-alert
-  //       console.log(`mark done ${result.amountCorrectQuestion}`);
-  //       history.push(`/contest/${contest.id}/exam/detail?resultId=${result.id}`);
-  //     } else {
-  //       enqueueSnackbar((data && data.message) || 'Mark failed', {
-  //         variant: 'error',
-  //       });
-  //     }
-  //   };
 
   const handleStartExam = (examTime) => {
     const startTime = new Date();
@@ -117,13 +96,6 @@ const ExamTest = () => {
     };
   }, []);
 
-  //   useEffect(() => {
-  //     console.log('load marking');
-  //     if (isMarking) {
-  //       setPristine();
-  //       handleFinishExam();
-  //     }
-  //   }, [isMarking]);
 
   const handleClickQuestion = (pos) => (e) => {
     e.preventDefault();
@@ -221,8 +193,8 @@ const ExamTest = () => {
                 </Typography>
                 <Typography
                   gutterBottom
-                  variant="title"
-                  style={{ color: "#ccc" }}
+                  variant="h5"
+                  sx={{ color: "#ccc", textAlign: "center" }}
                 >
                   {questionSelected && questionSelected.data.title}
                 </Typography>
@@ -231,7 +203,7 @@ const ExamTest = () => {
                 </Typography>
               </Box>
               <List>
-                {questionSelected &&
+                {questionSelected && questionSelected.data.answers ? (
                   questionSelected.data.answers
                     .sort((a, b) => a.position - b.position)
                     .map((el, index) => (
@@ -249,8 +221,14 @@ const ExamTest = () => {
                           <b>{alphabet.split(" ")[index]}</b>.{` ${el.content}`}
                         </Typography>
                       </ListItemButton>
-                    ))}
-                <TextField></TextField>
+                    ))
+                ) : (
+                  <EssayTest
+                    questionSelected={questionSelected}
+                    answers={answers}
+                    handleChangeEssayAnswer={handleChangeAnswer}
+                  />
+                )}
               </List>
             </Paper>
           </Grid>

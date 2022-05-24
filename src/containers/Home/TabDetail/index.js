@@ -59,23 +59,26 @@ export default function Tabdetail({ contest}) {
           alt="Paella dish"
         />
         <CardContent
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
+
         >
-          <Typography variant="body2" color="text.secondary">
-            {contest.description}
-          </Typography>
-          <Button
-           {...buttonProps}
-            sx={{
-              ...theme.typography.commonAvatar
-            }}
-          >
-            Tham gia
-            </Button>
+          <Grid container spacing="24">
+
+          <Grid item xs ={8}>
+            <Typography variant="body2" color="text.secondary">
+              {contest.description}
+            </Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <Button
+             {...buttonProps}
+              sx={{
+                ...theme.typography.commonAvatar
+              }}
+            >
+              Tham gia
+              </Button>
+          </Grid>
+          </Grid>
         </CardContent>
       </Card>
     </Grid>
